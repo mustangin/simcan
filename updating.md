@@ -8,11 +8,10 @@
 
 ## Update Database
 
-1. Download file untuk update database (ada di folder protected/database/xxx.simcan.php) atau [di sini](https://github.com/simda-id/simcan/tree/DATABASE)
-2. Login sebagai admin.
-3. Temukan menu update.
-4. Pilih file updater database. Pastikan memilih sesuai urutannya. Nama file mencerminkan tahun-bulan-tanggal.
-5. Jalankan proses update.
+1. Login sebagai admin.
+2. Temukan menu update.
+3. Cek update untuk membandingkan dengan database eksisting.
+4. Jalankan proses update __SECARA BERURUTAN__ .
 
 ## Known issues
 
