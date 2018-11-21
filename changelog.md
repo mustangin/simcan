@@ -2,6 +2,32 @@
 
 [Releases](https://github.com/simda-id/simcan/releases) | [Documentation](https://github.com/simda-id/simcan/wiki)
 
+## versi v1.0.0-rc05
+
+Release Candidate 05
+
+DISARANKAN MELAKUKAN PROSES EDIT-SIMPAN PADA RINCIAN KOMPONEN ASB.
+
+1. Penambahan mapping Sasaran OPD ke Sasaran Pemda
+2. Penambahan indikator Tujuan dan indikator Sasaran di RPJMD maupun Renstra
+3. Penambahan deskripsi Sasaran Program dan deskripsi Sasaran Kegiatan di Renstra
+4. Penambahan deskripsi sumber data dan rumus perhitungan indikator kinerja
+5. Perbaikan proses load data dan posting Program di Ranwal Renja
+6. Perbaikan proses load data dan posting di Rancangan Awal Renja
+7. Perbaikan kontrol pagu pada proses penyusunan renja
+8. Perbaikan proses load data di Forum Perangkat Daerah
+9. Penambahan report kelengkapan entry data ASB
+10. Perbaikan kategori rincian komponen pada ASB menjadi fix dan variabel. DISARANKAN MELAKUKAN PROSES EDIT-SIMPAN.
+11. Penambahan report matrix RPJMD khusus Belanja Langsung 
+12. Penambahan report sinkronisasi RPJMD dengan Renstra
+13. Penambahan report Draft RKA
+14. Penambahan sub modul e-SAKIP (ALPHA)
+15. Penambahan parameter struktur sub unit organisasi sampai dengan eselon IV (ALPHA)
+16. Penambahan menu Penetapan Kinerja (ALPHA)
+17. Penambahan menu peran group user pada User Manajemen (ALPHA)
+18. Perbaikan pola otentikasi aktivasi aplikasi
+19. Penyebaran berbagai bug di tempat yang tidak terduga
+
 ## versi v1.0.0-rc04
 
 Release Candidate 04
