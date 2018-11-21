@@ -3,7 +3,7 @@ Kode sumber aplikasi SIMDA Perencanaan yang dikembangkan oleh [Tim Aplikasi](htt
 
 ### Rilis Terakhir dan Dokumentasi
 
-1. Dapatkan [rilis terakhir di sini](https://github.com/simda-id/simcan/releases) dan [updater database di sini](https://github.com/simda-id/simcan/tree/DATABASE). 
+1. Dapatkan [rilis terakhir di sini](https://github.com/simda-id/simcan/releases). 
 2. Dokumentasi sederhana [tersedia di sini](https://github.com/simda-id/simcan/wiki).
 3. Pedoman instalasi [dapat dibaca di sini](https://github.com/simda-id/simcan/blob/master/installing.md).
 4. Pedoman update aplikasi [dapat dibaca di sini](https://github.com/simda-id/simcan/blob/master/updating.md).
