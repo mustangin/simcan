@@ -75,6 +75,7 @@ use hoaaah\LaravelMenu\Menu;
                                 'items' => [
                                     ['label' => 'Daftar User', 'url' => '/admin/parameter/user','visible' => $akses->get(110)],
                                     ['label' => 'Group User', 'url' => '/admin/parameter/user/group','visible' => $akses->get(110)],
+                                    ['label' => 'Peran Group User', 'url' => '/admin/parameter/user/peran','visible' => $akses->get(110)],
                                 ]
                             ],                        
                             [
@@ -83,7 +84,7 @@ use hoaaah\LaravelMenu\Menu;
                                 'visible' => $akses->getMulti([101, 102, 103, 104, 105, 106, 107, 108, 109, 111]),
                                 'items' => [
                                     ['label' => 'Pemda', 'icon' => 'fa fa-bank fa-fw', 'url' => '/pemda','visible' => $akses->get(101)],
-                                    ['label' => 'Kecamatan-Desa', 'icon' => 'fa fa-map-o fa-fw','url' => '/admin/parameter/kecamatan','visible' => $akses->get(102)],
+                                    ['label' => 'Wilayah Pemerintahan', 'icon' => 'fa fa-map-o fa-fw','url' => '/admin/parameter/kecamatan','visible' => $akses->get(102)],
                                     ['label' => 'Unit Organisasi', 'icon' => 'fa fa-building-o fa-fw','url' => '/admin/parameter/unit','visible' => $akses->get(103)],
                                     // ['label' => 'Urusan Bidang', 'url' => '/','visible' => $akses->get(104)],
                                     ['label' => 'Rekening Anggaran', 'icon' => 'fa fa-money fa-fw','url' => '/admin/parameter/rekening','visible' => $akses->get(105)],
@@ -98,7 +99,7 @@ use hoaaah\LaravelMenu\Menu;
                                     ['label' => 'Parameter Lainnya', 'icon' => 'fa fa-life-ring fa-fw','url' => '/admin/parameter/others','visible' => $akses->get(109)],
                                 ]
                             ],
-                            ['label' => 'Update Aplikasi', 'icon' => 'fa fa-refresh fa-fw', 'url' => '/admin/update','visible' => $akses->get(9)],
+                            ['label' => 'Update Database', 'icon' => 'fa fa-database fa-fw', 'url' => '/admin/update','visible' => $akses->get(9)],
                         ]
                     ]);
                 ?>
