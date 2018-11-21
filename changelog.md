@@ -26,7 +26,8 @@ DISARANKAN MELAKUKAN PROSES EDIT-SIMPAN PADA RINCIAN KOMPONEN ASB.
 16. Penambahan menu Penetapan Kinerja (ALPHA)
 17. Penambahan menu peran group user pada User Manajemen (ALPHA)
 18. Perbaikan pola otentikasi aktivasi aplikasi
-19. Penyebaran berbagai bug di tempat yang tidak terduga
+19. Perbaikan pola updating database
+20. Penyebaran berbagai bug di tempat yang tidak terduga
 
 ## versi v1.0.0-rc04
 
