@@ -17,3 +17,9 @@
 
 1. Updater database __HANYA__ bisa dijalankan untuk mysql server 5.6.xx sesuai system requirements.
 2. Aplikasi __TIDAK__ berada dalam maintenance mode selama proses update. Silakan pilih waktu update ketika user tidak mengakses aplikasi.
+
+## PERINGATAN
+
+SELALU LAKUKAN __BACKUP APLIKASI MAUPUN DATABASE__ SEBELUM MELAKUKAN PROSES UPDATE
+LAKUKAN __TES UPDATE DI LOKAL SERVER__ TERLEBIH DAHULU
+__JANGAN LUPA BERDOA__
