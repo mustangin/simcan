@@ -9,11 +9,11 @@ use hoaaah\LaravelBreadcrumb\Breadcrumb as Breadcrumb;
     <div class="row">
         <div class="col-md-12">
         <?php
-                $this->title = 'Load dan Proses Data PPAS';
+                $this->title = 'Load dan Proses Data RKPD Final';
                 $breadcrumb = new Breadcrumb();
                 $breadcrumb->homeUrl = 'modul2';
                 $breadcrumb->begin();
-                $breadcrumb->add(['label' => 'PPAS']);
+                $breadcrumb->add(['label' => 'RKPD']);
                 $breadcrumb->add(['label' => $this->title]);
                 $breadcrumb->end();
             ?> 
@@ -35,7 +35,7 @@ use hoaaah\LaravelBreadcrumb\Breadcrumb as Breadcrumb;
                             <input class="form-control text-center" type="text" id="tahun_rkpd" name="tahun_rkpd" value="{{Session::get('tahun')}}" disabled>
                         </div>
                         <button id="btnProses" type="button" class="btnProses btn btn-labeled btn-sm btn-primary">
-                                      <span class="btn-label"><i class="glyphicon glyphicon-download-alt"></i></span>Proses Load Data dari RKPD Final </button>
+                                      <span class="btn-label"><i class="glyphicon glyphicon-download-alt"></i></span>Proses Load Data dari Ranhir RKPD</button>
                 </div>
                 <div class="form-group hidden">
                     <label class="control-label col-sm-3 text-left" for="id_unit">Unit Penyusun Renja :</label>
@@ -55,21 +55,27 @@ use hoaaah\LaravelBreadcrumb\Breadcrumb as Breadcrumb;
                                 <table id="tblProgramRKPD" class="table table-striped table-bordered table-responsive">
                                     <thead>
                                         <tr>
+                                            <th width="5px" rowspan="3" style="text-align: center; vertical-align:middle"></th>
                                             <th width="5px" rowspan="3" style="text-align: center; vertical-align:middle">No Urut</th>
                                             <th rowspan="3" style="text-align: center; vertical-align:middle">Nama Program RKPD</th>
-                                            <th colspan="5" style="text-align: center; vertical-align:middle">Rincian Data</th>
-                                            <th width="5px" rowspan="3" style="text-align: center; vertical-align:middle">Status</th>
-                                            <th width="50px" rowspan="3" style="text-align: center; vertical-align:middle">Aksi</th>
+                                            <th colspan="8" style="text-align: center; vertical-align:middle">Rincian Data</th>
+                                            <th width="5px" rowspan="3" style="text-align: center; vertical-align:middle">Aksi</th>
                                         </tr>
                                         <tr>
-                                            <th width="5px" rowspan="2" style="text-align: center; vertical-align:middle">Program SKPD</th>  
-                                            <th colspan="3" style="text-align: center; vertical-align:middle">Kegiatan SKPD</th>
-                                            <th width="5px" rowspan="2" style="text-align: center; vertical-align:middle">Aktivitas SKPD</th>
+                                            <th colspan="2" style="text-align: center; vertical-align:middle">RKPD</th>
+                                            <th colspan="2" style="text-align: center; vertical-align:middle">Program SKPD</th>  
+                                            <th colspan="2" style="text-align: center; vertical-align:middle">Kegiatan SKPD</th>
+                                            <th colspan="2" style="text-align: center; vertical-align:middle">Aktivitas SKPD</th>
                                         </tr>
-                                        <tr>                                            
-                                            <th width="5px" style="text-align: center; vertical-align:middle">Jumlah</th>
-                                            <th width="20px" style="text-align: center; vertical-align:middle">Pagu Total</th>
-                                            <th width="20px" style="text-align: center; vertical-align:middle">Pagu Musrenbang</th>
+                                        <tr>
+                                            <th width="15px" style="text-align: center; vertical-align:middle">Pagu</th>
+                                            <th width="50px" style="text-align: center; vertical-align:middle">Pelaksana</th>                                            
+                                            <th width="15px" style="text-align: center; vertical-align:middle">Jumlah</th>
+                                            <th width="50px" style="text-align: center; vertical-align:middle">Pagu</th>
+                                            <th width="15px" style="text-align: center; vertical-align:middle">Jumlah</th>
+                                            <th width="50px" style="text-align: center; vertical-align:middle">Pagu</th>
+                                            <th width="15px" style="text-align: center; vertical-align:middle">Jumlah</th>
+                                            <th width="50px" style="text-align: center; vertical-align:middle">Pagu</th>
                                         </tr>
                                     </thead>
                                     <tbody>                                        
@@ -87,7 +93,7 @@ use hoaaah\LaravelBreadcrumb\Breadcrumb as Breadcrumb;
   <div class="modal-dialog modal-lg"  >
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" >Daftar Program Rancangan Renja yang belum di Load dalam Forum OPD</h3>
+        <h3 class="modal-title" >Daftar Program RKPD yang belum di-Load ke Musrenbang RKPD</h3>
       </div>
       <div class="modal-body">
       <form class="form-horizontal" role="form" autocomplete='off' action="" onsubmit="return false;">
@@ -223,45 +229,60 @@ $.ajax({
           }
           }
 });
-var programrkpd
-function loadProgram($tahun, $id_unit) {
+var programrkpd;
+function loadProgram() {
     programrkpd = $('#tblProgramRKPD').DataTable({
                   processing: true,
                   serverSide: true,
                   dom : 'BFRtIp',
                   "autoWidth": false,
-                  "ajax": {"url": "./loadData/getProgramRkpd/"+$tahun+"/"+$id_unit},
+                  "ajax": {"url": "./getDataRekap"},
+                  "language": {
+                          "decimal": ",",
+                          "thousands": "."},
+                  'columnDefs': [
+                     { 'width': 10,
+                        'targets': 0,
+                        'checkboxes': {'selectRow': true } },
+                     { "targets": 1, "width": 10 }
+                    ],
+                  'select': { 'style': 'multi' },
                   "columns": [
+                        { data: 'id_rkpd_rancangan', sClass: "dt-center",width:"3px"},
                         { data: 'no_urut', sClass: "dt-center",width:"5px"},
                         { data: 'uraian_program_rpjmd'},
-                        { data: 'jml_program', sClass: "dt-center",width:"5px",
+                        { data: 'pagu_ranwal', sClass: "dt-center",width:"20px",
+                            render: $.fn.dataTable.render.number( '.', ',', 2, '' )},
+                        { data: 'jml_unit', sClass: "dt-center",width:"5px",
+                            render: $.fn.dataTable.render.number( '.', ',', 0, '' )},                            
+                        { data: 'jml_prog_renja', sClass: "dt-center",width:"5px",
                             render: $.fn.dataTable.render.number( '.', ',', 0, '' )},
+                        { data: 'pagu_prog_renja', sClass: "dt-center",width:"20px",
+                            render: $.fn.dataTable.render.number( '.', ',', 2, '' )},
                         { data: 'jml_kegiatan', sClass: "dt-center",width:"5px",
                             render: $.fn.dataTable.render.number( '.', ',', 0, '' )},
-                        { data: 'jml_pagu', sClass: "dt-center",width:"20px",
-                            render: $.fn.dataTable.render.number( '.', ',', 2, '' )},
-                        { data: 'jml_musren', sClass: "dt-center",width:"20px",
+                        { data: 'pagu_kegiatan', sClass: "dt-center",width:"20px",
                             render: $.fn.dataTable.render.number( '.', ',', 2, '' )},
                         { data: 'jml_aktivitas', sClass: "dt-center",width:"5px",
                             render: $.fn.dataTable.render.number( '.', ',', 0, '' )},
-                        { data: 'icon','searchable': false, 'orderable':false, sClass: "dt-center",width:"5px",
-                            render: function(data, type, row,meta) {
-                            return '<i class="'+row.status_icon+'" style="font-size:16px;color:'+row.warna+';"/>';
-                          }},
+                        { data: 'pagu_aktivitas', sClass: "dt-center",width:"5px",
+                            render: $.fn.dataTable.render.number( '.', ',', 2, '' )},
                         { data: 'action', 'searchable': false, 'orderable':false, sClass: "dt-center",width:"50px" }
                       ],
                   "order": [[0, 'asc']],
                   "bDestroy": true
     });
-}
+};
 
-var ReProses_Tbl
-function loadReProses($id_unit,$tahun){
+loadProgram();
+
+var ReProses_Tbl;
+function loadReProses($tahun){
   ReProses_Tbl = $('#tblReProses').DataTable({
         processing: true,
         serverSide: true,
         "autoWidth": false,
-        "ajax": {"url": "./getSelectProgram/"+$id_unit+"/"+$tahun},
+        "ajax": {"url": "./getSelectProgram/"+$tahun},
         "language": {
                 "decimal": ",",
                 "thousands": "."},
@@ -273,30 +294,25 @@ function loadReProses($id_unit,$tahun){
           ],
         'select': { 'style': 'multi' },
         "columns": [
-              { data: 'id_rkpd_ranwal', sClass: "dt-center", searchable: false, orderable:false,},
-              { data: 'no_urut',sClass: "dt-center"},
+              { data: 'id_musrenkab', sClass: "dt-center", searchable: false, orderable:false,},
+              { data: 'urut',sClass: "dt-center"},
               { data: 'uraian_program_rpjmd'},
               { data: 'action', 'searchable': false, 'orderable':false,sClass: "dt-center" }
             ],
             "order": [[0, 'asc']],
             "bDestroy": true
       });
-}
-
-$( "#id_unit" ).change(function() {
-  loadProgram($('#tahun_rkpd').val(),$('#id_unit').val());
-  $('#judul').html('<b>Daftar Program RKPD yang akan dilaksanakan oleh '+$('#id_unit option:selected').text()+'</b>');
-});
+};
 
 $(document).on('click', '.btnProses', function() {
-    loadReProses($('#id_unit').val(),$('#tahun_rkpd').val());
+    loadReProses($('#tahun_rkpd').val());
     $('#cariReload').modal('show');
 });
 
 $(document).on('click', '#btnReLoad', function() {
   var data = ReProses_Tbl.row( $(this).parents('tr') ).data();
   var tahun=$('#tahun_rkpd').val();
-  var id_rkpd=data.id_rkpd_ranwal;
+  var id_rkpd=data.id_musrenkab;
 
     $.ajaxSetup({
         headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
@@ -307,21 +323,19 @@ $(document).on('click', '#btnReLoad', function() {
 
     $.ajax({
         type: 'POST',
-        url: './loadData/insertProgramRkpd',
+        url: './importData',
         data: {
           '_token': $('input[name=_token]').val(),
-          'tahun_renja' : $('#tahun_rkpd').val(),
-          'id_unit' : $('#id_unit').val(),
           'id_rkpd_ranwal' : id_rkpd,
       },
       success: function(data) {
         createPesan(data.pesan,"success");
-        $('#tblProgramRKPD').DataTable().ajax.reload();
+        $('#tblProgramRKPD').DataTable().ajax.reload(null,false);
         $('#ModalProgress').modal('hide');
       },
       error: function(data){
         createPesan(data.pesan,"danger");
-        $('#tblProgramRKPD').DataTable().ajax.reload();
+        $('#tblProgramRKPD').DataTable().ajax.reload(null,false);
         $('#ModalProgress').modal('hide');
       }
     });
@@ -348,21 +362,19 @@ $(document).on('click', '#btnProsesAll', function() {
     });         
     $.ajax({
         type: 'POST',
-        url: './loadData/insertProgramRkpd',
+        url: './importData',
         data: {
           '_token': $('input[name=_token]').val(),
-          'tahun_renja' : $('#tahun_rkpd').val(),
-          'id_unit' : $('#id_unit').val(),
           'id_rkpd_ranwal' : id_rkpd,
       },
       success: function(data) {
         createPesan(data.pesan,"success");
-        $('#tblProgramRKPD').DataTable().ajax.reload();
+        $('#tblProgramRKPD').DataTable().ajax.reload(null,false);
         $('#ModalProgress').modal('hide');
       },
       error: function(data){
         createPesan(data.pesan,"danger");
-        $('#tblProgramRKPD').DataTable().ajax.reload();
+        $('#tblProgramRKPD').DataTable().ajax.reload(null,false);
         $('#ModalProgress').modal('hide');
       }
     });
@@ -370,7 +382,7 @@ $(document).on('click', '#btnProsesAll', function() {
   e.preventDefault();
 });
 
-$(document).on('click', '#btnUnloadRenja', function() {
+$(document).on('click', '#btnUnload', function() {
 
   var data = programrkpd.row( $(this).parents('tr') ).data();
 
@@ -382,21 +394,19 @@ $(document).on('click', '#btnUnloadRenja', function() {
 
     $.ajax({
         type: 'POST',
-        url: './loadData/unLoadProgramRkpd',
+        url: './unLoadData',
         data: {
             '_token': $('input[name=_token]').val(),
-            'tahun' : data.tahun_forum,
-            'unit' : data.id_unit,
-            'id_forum' : data.id_forum_rkpdprog,
+            'id_rkpd_rancangan' : data.id_rkpd_rancangan
         },
         success: function(data) {
             createPesan(data.pesan,"success");
-            $('#tblProgramRKPD').DataTable().ajax.reload();
+            $('#tblProgramRKPD').DataTable().ajax.reload(null,false);
             $('#ModalProgress').modal('hide');
         },
         error: function(err){
             createPesan(err,"danger");
-            $('#tblProgramRKPD').DataTable().ajax.reload();
+            $('#tblProgramRKPD').DataTable().ajax.reload(null,false);
             $('#ModalProgress').modal('hide');
         }
     });

@@ -105,23 +105,169 @@ use hoaaah\LaravelMenu\Menu;
                                     'ulId' => 'side-menu'
                                 ],
                                 'items' => [
-                                    ['label' => 'Modul PPAS', 'icon'=>'fa fa-list-alt fa-fw fa-lg' ,'url' => '#'],
-                                    ['label' => 'Load Data RKPD', 'url' => '/ppas/loadData', 'visible' => $akses->get(701)],
-                                    ['label' => 'Penyusunan PPAS', 'url' => '/ppas', 'visible' => $akses->get(702)],
-                                    ['label' => 'Validasi PPAS', 'url' => '/ppas', 'visible' => $akses->get(702)],
-                                    ['label' => 'Proses RAPBD', 'url' => '/ppas', 'visible' => $akses->get(702)],
-                                    ['label' => 'Finalisasi RAPBD', 'url' => '/ppas', 'visible' => $akses->get(702)],
-                                    ['label' => 'Transfer Data ke Simda Keuangan', 'url' => '/ppas', 'visible' => $akses->get(702)],
+                                    ['label' => 'Modul Anggaran', 'icon'=>'fa fa-list-alt fa-fw fa-lg' ,'url' => '#'],
+                                    [   'label' => 'PPAS', 
+                                        'visible' => $akses->get(701),
+                                        'items' => [
+                                            [
+                                                'label' => 'Dokumen PPAS',
+                                                'visible' => $akses->get(701),
+                                                'url' => '/ppas',
+                                            ],
+                                            [
+                                                'label' => 'Penyusunan PPAS',
+                                                'visible' => $akses->get(701),
+                                                'items' => [
+                                                    [
+                                                        'label' => 'Program/Kegiatan',
+                                                        'visible' => $akses->get(701),
+                                                        'url' => '/ppas',
+                                                    ],
+                                                    [
+                                                        'label' => 'Pagu Anggaran',
+                                                        'visible' => $akses->get(701),
+                                                        'url' => '/ppas',
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ],
+                                    [   'label' => 'PPAS Perubahan', 
+                                        'visible' => $akses->get(701),
+                                        'items' => [
+                                            [
+                                                'label' => 'Dokumen PPAS Perubahan',
+                                                'visible' => $akses->get(20),
+                                                'url' => '/ppas',
+                                            ],
+                                            [
+                                                'label' => 'Penyusunan PPAS Perubahan',
+                                                'visible' => $akses->get(20),
+                                                'items' => [
+                                                    [
+                                                        'label' => 'Program/Kegiatan',
+                                                        'visible' => $akses->get(701),
+                                                        'url' => '/ppas',
+                                                    ],
+                                                    [
+                                                        'label' => 'Pagu Anggaran',
+                                                        'visible' => $akses->get(701),
+                                                        'url' => '/ppas',
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ],
+                                    [   'label' => 'APBD', 
+                                        'visible' => $akses->get(701),
+                                        'items' => [
+                                            [
+                                                'label' => 'Dokumen APBD',
+                                                'visible' => $akses->get(701),
+                                                'url' => '/ppas',
+                                            ],
+                                            [
+                                                'label' => 'Penyusunan APBD',
+                                                'visible' => $akses->get(701),
+                                                'items' => [
+                                                    [
+                                                        'label' => 'Program/Kegiatan',
+                                                        'visible' => $akses->get(701),
+                                                        'url' => '/ppas',
+                                                    ],
+                                                    [
+                                                        'label' => 'Pagu Anggaran',
+                                                        'visible' => $akses->get(701),
+                                                        'url' => '/ppas',
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ],
+                                    [   'label' => 'APBD Pergeseran', 
+                                        'visible' => $akses->get(701),
+                                        'items' => [
+                                            [
+                                                'label' => 'Dokumen APBD Pergeseran',
+                                                'visible' => $akses->get(20),
+                                                'url' => '/ppas',
+                                            ],
+                                            [
+                                                'label' => 'Penyusunan APBD Pergeseran',
+                                                'visible' => $akses->get(20),
+                                                'items' => [
+                                                    [
+                                                        'label' => 'Program/Kegiatan',
+                                                        'visible' => $akses->get(701),
+                                                        'url' => '/ppas',
+                                                    ],
+                                                    [
+                                                        'label' => 'Pagu Anggaran',
+                                                        'visible' => $akses->get(701),
+                                                        'url' => '/ppas',
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ],
+                                    [   'label' => 'APBD Perubahan', 
+                                        'visible' => $akses->get(701),
+                                        'items' => [
+                                            [
+                                                'label' => 'Dokumen APBD Perubahan',
+                                                'visible' => $akses->get(20),
+                                                'url' => '/ppas',
+                                            ],
+                                            [
+                                                'label' => 'Penyusunan APBD Perubahan',
+                                                'visible' => $akses->get(20),
+                                                'items' => [
+                                                    [
+                                                        'label' => 'Program/Kegiatan',
+                                                        'visible' => $akses->get(701),
+                                                        'url' => '/ppas',
+                                                    ],
+                                                    [
+                                                        'label' => 'Pagu Anggaran',
+                                                        'visible' => $akses->get(701),
+                                                        'url' => '/ppas',
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ],
+                                    [   'label' => 'APBD Pergeseran stlh Perubahan', 
+                                        'visible' => $akses->get(701),
+                                        'items' => [
+                                            [
+                                                'label' => 'Dokumen APBD Pergeseran',
+                                                'visible' => $akses->get(20),
+                                                'url' => '/ppas',
+                                            ],
+                                            [
+                                                'label' => 'Penyusunan APBD Pergeseran',
+                                                'visible' => $akses->get(20),
+                                                'items' => [
+                                                    [
+                                                        'label' => 'Program/Kegiatan',
+                                                        'visible' => $akses->get(701),
+                                                        'url' => '/ppas',
+                                                    ],
+                                                    [
+                                                        'label' => 'Pagu Anggaran',
+                                                        'visible' => $akses->get(701),
+                                                        'url' => '/ppas',
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ],
+                                    [   'label' => 'Sinkronisasi Parameter Simda Keuangan', 
+                                        'url' => '/ppas', 
+                                        'visible' => $akses->get(702)],
                                 ]
                             ]);
                         ?>
-                        {{-- <div class="sidebar-nav navbar-collapse">
-                            <ul class="nav" id="side-menu">
-                                <li><a href="{{ url('/ppas/loadData')}}"> Load Data RKPD</a></li>
-                                <li><a href="{{ url('/ppas')}}"> Penyusunan PPAS</a></li>
-                                @endif
-                            </ul>
-                        </div> --}}
                     </div>
         </nav>
 

@@ -254,18 +254,29 @@ var tbl_CekDB;
                         success: function(data) { 
                             $.ajax({
                                 type: "GET",
-                                url: 'update/UpdateAtributUnik',
+                                url: 'update/TambahAtributUnik',
                                 dataType: "json",
                                 success: function(data) { 
-                                    if(data.status_pesan==1){
-                                        createPesan(data.pesan,"success");
-                                        } else {
-                                        createPesan(data.pesan,"danger"); 
-                                    }
-                                    $('#prosesbar').hide();
+                                    $.ajax({
+                                        type: "GET",
+                                        url: 'update/UpdateAtributUnik',
+                                        dataType: "json",
+                                        success: function(data) { 
+                                            if(data.status_pesan==1){
+                                                createPesan(data.pesan,"success");
+                                                } else {
+                                                createPesan(data.pesan,"danger"); 
+                                            }
+                                            $('#prosesbar').hide();
+                                        },
+                                        error: function(data) {
+                                            createPesan("AJAX Update Atribute Key Unik Error....!!!","danger"); 
+                                            $('#prosesbar').hide();
+                                        }
+                                    })
                                 },
                                 error: function(data) {
-                                    createPesan("AJAX Atribute Key Unik Error....!!!","danger"); 
+                                    createPesan("AJAX Tambah Atribute Key Unik Error....!!!","danger"); 
                                     $('#prosesbar').hide();
                                 }
                             })
@@ -340,7 +351,8 @@ var tbl_CekDB;
             $('#prosesbar').hide();
           },
           error: function(data) { 
-            createPesan("AJAX Finalisasi Error....!!!","danger");    
+            // createPesan("AJAX Finalisasi Error....!!!","danger");  
+            createPesan(data.pesan,"danger");   
             $('#prosesbar').hide();
           }
     }); 
